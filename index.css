@@ -5,8 +5,14 @@
 :root {
   --border-gray: #dbdbdb;
   --background-gray: #fafafa;
+  --text-gray: #8f8f8f;
+  --active-light-blue: #0095f6;
 }
 
 body {
   padding-top: 60px;
+}
+
+.bold {
+  font-weight: 600;
 }

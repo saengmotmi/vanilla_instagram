@@ -1,7 +1,7 @@
 import { $ } from "../../utils/dom.js";
 
-const cssModule = await import("./nav.css", { assert: { type: "css" } });
-document.adoptedStyleSheets = [cssModule.default];
+const cssNav = await import("./nav.css", { assert: { type: "css" } });
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, cssNav.default];
 
 (function Nav() {
   const nav = $(".navigator");
