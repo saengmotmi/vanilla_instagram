@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --border-gray: #dbdbdb;
+  --background-gray: #fafafa;
+}
+
+body {
+  padding-top: 60px;
+}

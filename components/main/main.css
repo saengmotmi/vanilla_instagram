@@ -1,0 +1,28 @@
+.main {
+}
+
+.main .feeds {
+  position: relative;
+  width: 100%;
+  max-width: 935px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.main .feeds article {
+  margin-bottom: 24px;
+  max-width: 614px;
+  border: 1px solid var(--border-gray);
+  border-radius: 3px;
+}
+
+.main .feeds article img {
+  width: 100%;
+}
+
+aside {
+  position: fixed;
+  top: 90px;
+  width: 100%;
+  max-width: 293px;
+}
