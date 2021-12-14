@@ -9,34 +9,32 @@ document.adoptedStyleSheets = [...document.adoptedStyleSheets, cssMain.default];
 
 const feedsData = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
-(function Main(feeds) {
+(async function Main(feeds) {
   const main = $(".main");
 
+  main.innerHTML = `
+    <section class="feeds">
+      ${await Stories()}
+      ${(await Promise.all(feeds.map(Feed))).joinComma()}
+      ${await Aside()}
+    </section>
+  `;
+
   sideEffect(() => {
-    const aside = $(".aside");
-    const feeds = $(".feeds");
-
-    setAsidePosition();
-
     // TODO: rAF 적용
     setEventListener({
       element: window,
-      cacheKey: "setAsidePosition",
       eventType: "resize",
       callback: setAsidePosition,
     });
 
+    setAsidePosition();
+
     function setAsidePosition() {
+      const aside = $(".aside");
+      const feeds = $(".feeds");
       const asideLeftPosition = feeds.getBoundingClientRect().left + 614 + 28;
       aside.style.left = asideLeftPosition + "px";
     }
   });
-
-  main.innerHTML = `
-    <section class="feeds">
-      ${Stories()}
-      ${feeds.map(Feed).joinComma()}
-      ${Aside()}
-    </section>
-  `;
 })(feedsData);

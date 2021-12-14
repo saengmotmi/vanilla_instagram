@@ -4,8 +4,11 @@ export function sideEffect(callback) {
   }, 0);
 }
 
+let count = 0;
 const eventListenerCache = {};
-export function setEventListener({ element, cacheKey, eventType, callback }) {
+export function setEventListener({ element, eventType, callback }) {
+  count++;
+  const cacheKey = callback.name + count;
   if (eventListenerCache[cacheKey]) {
     element.removeEventListener(eventType, callback);
   }

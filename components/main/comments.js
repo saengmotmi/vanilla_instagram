@@ -1,6 +1,6 @@
 import { sideEffect, setEventListener } from "../../utils/sideEffect.js";
 
-export default function Comments({ id }) {
+export default async function Comments({ id }) {
   const data = [{ comment_id: 1, username: "saengmotmi", content: "ㅎㅇ" }];
 
   sideEffect(() => {
@@ -12,16 +12,14 @@ export default function Comments({ id }) {
 
     setEventListener({
       element: submitButton,
-      cacheKey: "buttonClickEvent" + id,
       eventType: "click",
       callback: submitComment,
     });
 
     setEventListener({
       element: input,
-      cacheKey: "inputEvent" + id,
       eventType: "keypress",
-      callback: (e) => {
+      callback: function handleInput(e) {
         if (e.key === "Enter") submitComment();
       },
     });
