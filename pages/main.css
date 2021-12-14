@@ -168,3 +168,40 @@ aside {
 .main .feeds .feed .feed_comment_input button.inactive {
   opacity: 0.3;
 }
+
+/* aside Component */
+
+.aside {
+}
+
+.aside .aside_profile {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.aside .aside_profile .aside_profile_image {
+  flex: 1;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.aside .aside_profile .aside_profile_info {
+  flex: 5;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.aside .aside_profile .aside_profile_info p:first-child {
+  margin-bottom: 8px;
+}
+
+.aside .aside_profile .account_transition {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}

@@ -17,3 +17,11 @@ body {
 .bold {
   font-weight: 600;
 }
+
+.text-gray {
+  color: var(--text-gray);
+}
+
+.text-blue {
+  color: var(--active-light-blue);
+}
