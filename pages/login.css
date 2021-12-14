@@ -1,0 +1,43 @@
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(250, 250, 250);
+}
+
+.login .login_form {
+  padding: 10px 0;
+  width: 350px;
+  background-color: #fff;
+  border: 1px solid var(--border-gray);
+  border-radius: 3px;
+}
+
+.login .login_form .instagram_logo {
+  display: block;
+  margin: 22px auto 12px;
+  width: 175px;
+}
+
+.login .login_form input {
+  display: block;
+  width: 268px;
+  height: 38px;
+  margin: 0 auto 4px;
+  padding-left: 8px;
+  border: 1px solid var(--border-gray);
+  border-radius: 3px;
+}
+
+.login .login_form button {
+  display: block;
+  width: 268px;
+  height: 30px;
+  margin: 8px auto;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--active-light-blue);
+  color: #fff;
+  cursor: pointer;
+}

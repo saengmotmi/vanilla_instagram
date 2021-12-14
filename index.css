@@ -9,8 +9,9 @@
   --active-light-blue: #0095f6;
 }
 
+html,
 body {
-  padding-top: 60px;
+  font-size: 100%;
 }
 
 .bold {
