@@ -1,21 +1,40 @@
+import sideEffect from "../../utils/sideEffect.js";
+
+const eventListenerCache = {};
+
 export default function Comments({ id }) {
   const data = [{ comment_id: 1, username: "saengmotmi", content: "ㅎㅇ" }];
 
-  setTimeout(() => {
+  sideEffect(() => {
     const comments = document.querySelectorAll(".comments");
     const comment = [...comments].find(({ dataset }) => +dataset.idx === id);
     const input = comment.querySelector("input");
     const userComments = comment.querySelector(".feed_user_comments");
     const submitButton = comment.querySelector("button");
 
-    submitButton.addEventListener("click", () => {
-      submitComment();
+    setEventListener({
+      element: submitButton,
+      cacheKey: "buttonClickEvent" + id,
+      eventType: "click",
+      callback: submitComment,
     });
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        submitComment();
+
+    setEventListener({
+      element: input,
+      cacheKey: "inputEvent" + id,
+      eventType: "keypress",
+      callback: (e) => {
+        if (e.key === "Enter") submitComment();
+      },
+    });
+
+    function setEventListener({ element, cacheKey, eventType, callback }) {
+      if (eventListenerCache[cacheKey]) {
+        element.removeEventListener(eventType, callback);
       }
-    });
+      element.addEventListener(eventType, callback);
+      eventListenerCache[cacheKey] = callback;
+    }
 
     function clearInput() {
       input.value = "";
@@ -34,7 +53,7 @@ export default function Comments({ id }) {
       userComments.appendChild(newComment);
       clearInput();
     }
-  }, 0);
+  });
 
   return `
     <section class="comments" data-idx="${id}">
