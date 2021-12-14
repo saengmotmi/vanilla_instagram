@@ -1,6 +1,4 @@
-import sideEffect from "../../utils/sideEffect.js";
-
-const eventListenerCache = {};
+import { sideEffect, setEventListener } from "../../utils/sideEffect.js";
 
 export default function Comments({ id }) {
   const data = [{ comment_id: 1, username: "saengmotmi", content: "ㅎㅇ" }];
@@ -27,14 +25,6 @@ export default function Comments({ id }) {
         if (e.key === "Enter") submitComment();
       },
     });
-
-    function setEventListener({ element, cacheKey, eventType, callback }) {
-      if (eventListenerCache[cacheKey]) {
-        element.removeEventListener(eventType, callback);
-      }
-      element.addEventListener(eventType, callback);
-      eventListenerCache[cacheKey] = callback;
-    }
 
     function clearInput() {
       input.value = "";
@@ -69,7 +59,7 @@ export default function Comments({ id }) {
         <p>좋아요 1,000개</p>
       </div>
       <div class="feed_contents">
-        <span class="feed_username bold">saengmotmi</span>
+        <span class="feed_username bold">${"saengmotmi"}</span>
         <span>안녕하세욤</span>
       </div>
       <ul class="feed_user_comments">
