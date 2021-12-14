@@ -2,10 +2,11 @@ export default async function Stories() {
   const storyUsers = await fetch("/data/stories.json").then((res) =>
     res.json()
   );
+  const stories = (await Promise.all(storyUsers.map(Story))).joinComma();
 
   return `
     <div class="stories">
-      ${(await Promise.all(storyUsers.map(Story))).joinComma()}
+      ${stories}
     </div>
   `;
 }

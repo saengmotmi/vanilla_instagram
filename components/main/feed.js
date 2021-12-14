@@ -1,6 +1,8 @@
 import Comments from "./comments.js";
 
 export default async function Feed({ id }) {
+  const comments = await Comments({ id });
+
   return `
     <article class="feed">
       <header>
@@ -14,7 +16,7 @@ export default async function Feed({ id }) {
         <i class="far fa-ellipsis-h"></i>
       </header>
       <img alt="feed_img" src="https://saengmotmi.netlify.app/static/263099543667adabc3bab0baf80a63cc/fbd2c/reculsive-humor.jpg" />
-      ${await Comments({ id })}
+      ${comments}
     </article>
   `;
 }

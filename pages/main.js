@@ -9,14 +9,18 @@ document.adoptedStyleSheets = [...document.adoptedStyleSheets, cssMain.default];
 
 const feedsData = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
-(async function Main(feeds) {
+(async function Main(feedsData) {
   const main = $(".main");
+
+  const stories = await Stories();
+  const feeds = (await Promise.all(feedsData.map(Feed))).joinComma();
+  const aside = await Aside();
 
   main.innerHTML = `
     <section class="feeds">
-      ${await Stories()}
-      ${(await Promise.all(feeds.map(Feed))).joinComma()}
-      ${await Aside()}
+      ${stories}
+      ${feeds}
+      ${aside}
     </section>
   `;
 

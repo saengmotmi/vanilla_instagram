@@ -5,6 +5,7 @@ document.adoptedStyleSheets = [...document.adoptedStyleSheets, cssNav.default];
 
 (function Nav() {
   const nav = $(".navigator");
+
   nav.innerHTML = `
     <div class="navigator-inner">
       <div class="instagram-logo">

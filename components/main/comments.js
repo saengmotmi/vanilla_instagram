@@ -2,12 +2,13 @@ import { sideEffect, setEventListener } from "../../utils/sideEffect.js";
 
 export default async function Comments({ id }) {
   const data = [{ comment_id: 1, username: "saengmotmi", content: "ㅎㅇ" }];
+  const userComments = data.map(UserComment).joinComma();
 
   sideEffect(() => {
     const comments = document.querySelectorAll(".comments");
     const comment = [...comments].find(({ dataset }) => +dataset.idx === id);
     const input = comment.querySelector("input");
-    const userComments = comment.querySelector(".feed_user_comments");
+    const feedUserComments = comment.querySelector(".feed_user_comments");
     const submitButton = comment.querySelector("button");
 
     setEventListener({
@@ -38,7 +39,7 @@ export default async function Comments({ id }) {
         </p>
         <i class="fal fa-sm fa-heart"></i>
       `;
-      userComments.appendChild(newComment);
+      feedUserComments.appendChild(newComment);
       clearInput();
     }
   });
@@ -61,7 +62,7 @@ export default async function Comments({ id }) {
         <span>안녕하세욤</span>
       </div>
       <ul class="feed_user_comments">
-        ${data.map(UserComment).joinComma()}
+        ${userComments}
       </ul>
       <p class="created_at">1시간 전</p>
       <div class="feed_comment_input">
