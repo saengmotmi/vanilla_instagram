@@ -1,7 +1,7 @@
-import Feed from "./feed.js";
-import Aside from "./aside.js";
-import Stories from "./stories.js";
-import { $ } from "../../utils/dom.js";
+import Feed from "../components/main/feed.js";
+import Aside from "../components/main/aside.js";
+import Stories from "../components/main/stories.js";
+import { $ } from "../utils/dom.js";
 
 const cssMain = await import("./main.css", { assert: { type: "css" } });
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, cssMain.default];
