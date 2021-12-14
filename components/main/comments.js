@@ -34,7 +34,7 @@ export default function Comments({ id }) {
       userComments.appendChild(newComment);
       clearInput();
     }
-  }, 100);
+  }, 0);
 
   return `
     <section class="comments" data-idx="${id}">
